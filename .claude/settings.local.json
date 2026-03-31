@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(taskkill //PID 30484 //F)",
+      "Bash(gh --version)"
+    ]
+  }
+}

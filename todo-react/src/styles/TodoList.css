@@ -1,0 +1,199 @@
+.todo-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.todo-list-container h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--card-text-h);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.todo-list-container h2::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--accent), var(--primary-hover));
+  border-radius: 4px;
+}
+
+.error-message {
+  padding: 0.7rem 1rem;
+  background: rgba(220, 38, 38, 0.15);
+  color: #fca5a5;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  border-left: 3px solid var(--danger);
+}
+
+/* Filters */
+.filters-section {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--card-divider);
+}
+
+.filter-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filter-group select,
+.search-form input {
+  padding: 0.5rem 0.75rem;
+  border: 1.5px solid var(--card-input-border);
+  border-radius: var(--radius-xs);
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--text-h);
+  background: var(--card-input-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-group select option {
+  background: #fff;
+  color: var(--text-h);
+}
+
+.filter-group select:focus,
+.search-form input:focus {
+  outline: none;
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+  background: #fff;
+}
+
+.search-form input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 180px;
+}
+
+.search-form input {
+  flex: 1;
+}
+
+.search-form button {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-form button:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 12px var(--primary-glow);
+}
+
+/* States */
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--card-text-muted);
+  font-size: 0.95rem;
+}
+
+.loading {
+  font-weight: 500;
+  color: var(--primary-hover);
+}
+
+.empty-state {
+  border: 2px dashed var(--card-input-border);
+  border-radius: var(--radius-sm);
+}
+
+/* Todo list */
+.todos {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--card-divider);
+}
+
+.pagination button {
+  padding: 0.45rem 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: 0 2px 12px var(--primary-glow);
+}
+
+.pagination button:disabled {
+  background: var(--card-input-border);
+  color: var(--card-text-muted);
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: var(--card-text-muted);
+  font-size: 0.85rem;
+  min-width: 130px;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .filters-section {
+    flex-direction: column;
+  }
+
+  .filter-group {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .filter-group select {
+    width: 100%;
+  }
+
+  .search-form {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .search-form input,
+  .search-form button {
+    width: 100%;
+  }
+
+  .pagination {
+    flex-direction: column;
+  }
+}

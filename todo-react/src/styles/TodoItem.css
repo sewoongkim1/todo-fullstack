@@ -1,0 +1,252 @@
+.todo-item {
+  border: 1.5px solid var(--card-divider);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem 1.25rem;
+  margin-bottom: 0.75rem;
+  transition: all 0.25s ease;
+  background: rgba(15, 23, 42, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.todo-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-hover);
+  transition: width 0.25s;
+}
+
+.todo-item:hover {
+  border-color: var(--primary-hover);
+  box-shadow: 0 4px 20px var(--primary-glow);
+  transform: translateY(-2px);
+}
+
+/* --- Status: 대기 (슬레이트 블루) --- */
+.todo-item.status-todo {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+.todo-item.status-todo::before {
+  background: #818cf8;
+}
+.todo-item.status-todo:hover {
+  border-color: #818cf8;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+}
+
+/* --- Status: 진행중 (앰버 오렌지) --- */
+.todo-item.status-in-progress {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+.todo-item.status-in-progress::before {
+  background: #f59e0b;
+}
+.todo-item.status-in-progress:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.2);
+}
+
+/* --- Status: 완료 (에메랄드 그린) --- */
+.todo-item.status-done {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+.todo-item.status-done::before {
+  background: #10b981;
+}
+.todo-item.status-done:hover {
+  border-color: #34d399;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.18);
+}
+
+/* --- Status: 취소 (로즈 레드) --- */
+.todo-item.status-cancelled {
+  background: rgba(244, 63, 94, 0.08);
+  border-color: rgba(251, 113, 133, 0.2);
+  opacity: 0.75;
+}
+.todo-item.status-cancelled::before {
+  background: #fb7185;
+}
+
+/* --- Header --- */
+.todo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.todo-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--card-text-h);
+  flex: 1;
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.todo-item.status-done .todo-title,
+.todo-item.status-cancelled .todo-title {
+  text-decoration: line-through;
+  color: var(--card-text-muted);
+}
+
+/* --- Badges --- */
+.todo-badges {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+/* Priority */
+.badge.priority.priority-low {
+  background: rgba(96, 165, 250, 0.2);
+  color: #93c5fd;
+}
+.badge.priority.priority-medium {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+}
+.badge.priority.priority-high {
+  background: rgba(248, 113, 113, 0.2);
+  color: #fca5a5;
+  animation: pulse-badge 2s ease-in-out infinite;
+}
+
+@keyframes pulse-badge {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Category */
+.badge.category {
+  background: rgba(14, 165, 233, 0.15);
+  color: #7dd3fc;
+}
+
+/* Status */
+.badge.status.status-todo {
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+}
+.badge.status.status-in-progress {
+  background: rgba(245, 158, 11, 0.18);
+  color: #fcd34d;
+}
+.badge.status.status-done {
+  background: rgba(16, 185, 129, 0.18);
+  color: #6ee7b7;
+}
+.badge.status.status-cancelled {
+  background: rgba(244, 63, 94, 0.12);
+  color: #fda4af;
+}
+
+/* --- Description --- */
+.todo-description {
+  color: var(--card-text);
+  font-size: 0.88rem;
+  margin: 0.5rem 0;
+  word-break: break-word;
+  line-height: 1.55;
+}
+
+/* --- Meta --- */
+.todo-meta {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.78rem;
+  color: var(--card-text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* --- Actions --- */
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--card-divider);
+}
+
+.status-select {
+  flex: 1;
+  padding: 0.45rem 0.6rem;
+  border: 1.5px solid var(--card-input-border);
+  border-radius: var(--radius-xs);
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--text-h);
+  background: var(--card-input-bg);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.status-select option {
+  background: #fff;
+  color: var(--text-h);
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.btn-delete {
+  padding: 0.45rem 0.9rem;
+  background: transparent;
+  color: var(--card-text-muted);
+  border: 1.5px solid var(--card-divider);
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-delete:hover {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: var(--danger);
+  color: #fca5a5;
+}
+
+@media (max-width: 640px) {
+  .todo-header {
+    flex-direction: column;
+  }
+  .todo-badges {
+    justify-content: flex-start;
+  }
+  .todo-actions {
+    flex-direction: column;
+  }
+  .status-select,
+  .btn-delete {
+    width: 100%;
+  }
+}
