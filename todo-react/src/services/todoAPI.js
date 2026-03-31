@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api/todos';
+const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000') + '/api/todos';
 
 export const todoAPI = {
   // 할일 목록 조회
