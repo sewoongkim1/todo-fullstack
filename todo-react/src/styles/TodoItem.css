@@ -218,6 +218,23 @@
   box-shadow: 0 0 0 2px var(--primary-glow);
 }
 
+.btn-edit {
+  padding: 0.45rem 0.9rem;
+  background: transparent;
+  color: var(--card-text-muted);
+  border: 1.5px solid var(--card-divider);
+  border-radius: var(--radius-xs);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-edit:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: var(--primary-hover);
+  color: #a5b4fc;
+}
+
 .btn-delete {
   padding: 0.45rem 0.9rem;
   background: transparent;
@@ -235,6 +252,97 @@
   color: #fca5a5;
 }
 
+/* --- Edit Form --- */
+.todo-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.edit-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.edit-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--card-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.edit-group input,
+.edit-group textarea,
+.edit-group select {
+  padding: 0.55rem 0.75rem;
+  border: 1.5px solid var(--card-input-border);
+  border-radius: var(--radius-xs);
+  font-family: inherit;
+  font-size: 0.88rem;
+  color: var(--text-h);
+  background: var(--card-input-bg);
+  transition: all 0.2s ease;
+}
+
+.edit-group input:focus,
+.edit-group textarea:focus,
+.edit-group select:focus {
+  outline: none;
+  border-color: var(--primary-hover);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.btn-save {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-save:hover:not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 12px var(--primary-glow);
+}
+.btn-save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-cancel {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--card-text-muted);
+  border: 1.5px solid var(--card-divider);
+  border-radius: var(--radius-xs);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-cancel:hover {
+  background: rgba(148, 163, 184, 0.1);
+  color: var(--card-text-h);
+}
+
 @media (max-width: 640px) {
   .todo-header {
     flex-direction: column;
@@ -246,7 +354,11 @@
     flex-direction: column;
   }
   .status-select,
+  .btn-edit,
   .btn-delete {
     width: 100%;
+  }
+  .edit-row {
+    grid-template-columns: 1fr;
   }
 }
